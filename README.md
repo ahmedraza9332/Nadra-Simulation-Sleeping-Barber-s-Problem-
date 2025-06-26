@@ -1,77 +1,87 @@
-NADRA Simulation - The Sleeping Barber Problem
-A C++ simulation of Pakistan's NADRA (National Database and Registration Authority) service system, inspired by the classic "Sleeping Barber Problem" from operating systems theory.
-📋 Overview
+# NADRA Simulation - The Sleeping Barber Problem
+
+A C++ simulation of Pakistan's **NADRA (National Database and Registration Authority)** service system, inspired by the classic "Sleeping Barber Problem" from operating systems theory.
+
+## 📋 Overview
+
 This project demonstrates a real-world application of the sleeping barber synchronization problem by modeling NADRA's citizen verification services. The simulation uses multithreading to represent the interaction between NADRA workers and citizens seeking various services like CNIC applications, passport renewals, and other documentation services.
-🧵 Problem Description
-The Classic Sleeping Barber Problem adapted for NADRA:
 
-Workers (Barbers): NADRA service representatives who process citizen requests
-Customers (Citizens): People seeking NADRA services
-Waiting Area: Limited seating capacity in the NADRA office
-Service Counter: Where actual document processing occurs
+## 🧵 Problem Description
 
-How It Works
+**The Classic Sleeping Barber Problem adapted for NADRA:**
 
-N Workers operate as independent threads, each capable of serving citizens
-M Customers arrive as separate threads seeking services
-Fixed-size waiting area with limited seating capacity
-Customer behavior:
+- **Workers (Barbers)**: NADRA service representatives who process citizen requests
+- **Customers (Citizens)**: People seeking NADRA services 
+- **Waiting Area**: Limited seating capacity in the NADRA office
+- **Service Counter**: Where actual document processing occurs
 
-If waiting area has space → customer sits and waits for service
-If waiting area is full → customer leaves and returns later
+### How It Works
 
+1. **N Workers** operate as independent threads, each capable of serving citizens
+2. **M Customers** arrive as separate threads seeking services
+3. **Fixed-size waiting area** with limited seating capacity
+4. **Customer behavior**:
+   - If waiting area has space → customer sits and waits for service
+   - If waiting area is full → customer leaves and returns later
+5. **Worker behavior**:
+   - If customers are waiting → worker serves the next customer
+   - If no customers → worker sleeps until a customer arrives
 
-Worker behavior:
+## 🛠️ Technical Implementation
 
-If customers are waiting → worker serves the next customer
-If no customers → worker sleeps until a customer arrives
+- **Language**: C++
+- **Threading**: POSIX threads (pthreads)
+- **Synchronization**: Mutexes and condition variables
+- **Platform**: Linux only
 
+## 🚀 Getting Started
 
+### Prerequisites
+- Linux operating system
+- GCC compiler with pthread support
 
-🛠️ Technical Implementation
+### Compilation
+```bash
+g++ nadra_problem.cpp -pthread -o nadra_problem
+```
 
-Language: C++
-Threading: POSIX threads (pthreads)
-Synchronization: Mutexes and condition variables
-Platform: Linux only
+### Running the Simulation
+```bash
+./nadra_problem
+```
 
-🚀 Getting Started
-Prerequisites
+## 📊 Simulation Parameters
 
-Linux operating system
-GCC compiler with pthread support
-
-Compilation
-bashg++ nadra_problem.cpp -pthread -o nadra_problem
-Running the Simulation
-bash./nadra_problem
-📊 Simulation Parameters
 You can modify the following parameters in the source code:
+- Number of NADRA workers
+- Number of citizens
+- Waiting area capacity
+- Service time duration
 
-Number of NADRA workers
-Number of citizens
-Waiting area capacity
-Service time duration
+## 🎯 Learning Objectives
 
-🎯 Learning Objectives
 This simulation demonstrates:
+- **Thread synchronization** in concurrent programming
+- **Producer-consumer problem** variants
+- **Resource management** with limited capacity
+- **Real-world application** of OS concepts
 
-Thread synchronization in concurrent programming
-Producer-consumer problem variants
-Resource management with limited capacity
-Real-world application of OS concepts
+## 🇵🇰 About NADRA
 
-🇵🇰 About NADRA
 NADRA (National Database and Registration Authority) is Pakistan's premier organization responsible for:
+- Issuing Computerized National Identity Cards (CNIC)
+- Passport services
+- Birth/death certificates
+- Family registration certificates
 
-Issuing Computerized National Identity Cards (CNIC)
-Passport services
-Birth/death certificates
-Family registration certificates
+## 📝 Author
 
-📝 Author
-Ahmed Raza - ahmedraza9332
-📄 License
-This project is open source and available under the MIT License.
+**Ahmed Raza** - [ahmedraza9332](https://github.com/ahmedraza9332)
 
-This simulation is created for educational purposes to demonstrate operating system concepts through a familiar, real-world scenario.
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+*This simulation is created for educational purposes to demonstrate operating system concepts through a familiar, real-world scenario.*
